@@ -1,0 +1,13 @@
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Logic\obj\Debug\Logic.csproj.AssemblyReference.cache
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Logic\obj\Debug\Logic.csproj.CoreCompileInputs.cache
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Logic\bin\Debug\Logic.dll
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Logic\bin\Debug\Logic.pdb
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Logic\bin\Debug\DAO.dll
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Logic\bin\Debug\Domain.dll
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Logic\bin\Debug\Services.dll
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Logic\bin\Debug\DAO.pdb
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Logic\bin\Debug\Domain.pdb
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Logic\bin\Debug\Services.pdb
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Logic\obj\Debug\Logic.csproj.CopyComplete
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Logic\obj\Debug\Logic.dll
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Logic\obj\Debug\Logic.pdb

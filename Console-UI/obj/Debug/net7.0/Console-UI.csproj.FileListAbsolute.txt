@@ -1,0 +1,16 @@
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Console-UI\bin\Debug\net7.0\Console-UI.exe
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Console-UI\bin\Debug\net7.0\Console-UI.dll.config
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Console-UI\bin\Debug\net7.0\Console-UI.deps.json
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Console-UI\bin\Debug\net7.0\Console-UI.runtimeconfig.json
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Console-UI\bin\Debug\net7.0\Console-UI.dll
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Console-UI\bin\Debug\net7.0\Console-UI.pdb
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Console-UI\obj\Debug\net7.0\Console-UI.csproj.AssemblyReference.cache
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Console-UI\obj\Debug\net7.0\Console-UI.GeneratedMSBuildEditorConfig.editorconfig
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Console-UI\obj\Debug\net7.0\Console-UI.AssemblyInfoInputs.cache
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Console-UI\obj\Debug\net7.0\Console-UI.AssemblyInfo.cs
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Console-UI\obj\Debug\net7.0\Console-UI.csproj.CoreCompileInputs.cache
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Console-UI\obj\Debug\net7.0\Console-UI.dll
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Console-UI\obj\Debug\net7.0\refint\Console-UI.dll
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Console-UI\obj\Debug\net7.0\Console-UI.pdb
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Console-UI\obj\Debug\net7.0\Console-UI.genruntimeconfig.cache
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Console-UI\obj\Debug\net7.0\ref\Console-UI.dll

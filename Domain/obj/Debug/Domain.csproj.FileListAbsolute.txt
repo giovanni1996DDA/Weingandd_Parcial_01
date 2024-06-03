@@ -1,0 +1,6 @@
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Domain\obj\Debug\Domain.csproj.AssemblyReference.cache
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Domain\bin\Debug\Domain.dll
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Domain\bin\Debug\Domain.pdb
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Domain\obj\Debug\Domain.dll
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Domain\obj\Debug\Domain.pdb

@@ -1,0 +1,6 @@
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Services\bin\Debug\Services.dll
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Services\bin\Debug\Services.pdb
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Services\obj\Debug\Services.csproj.AssemblyReference.cache
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Services\obj\Debug\Services.csproj.CoreCompileInputs.cache
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Services\obj\Debug\Services.dll
+F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Services\obj\Debug\Services.pdb
