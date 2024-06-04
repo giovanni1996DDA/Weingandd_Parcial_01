@@ -8,12 +8,17 @@ namespace Domain
 {
     public class BoletoTurista : Boleto
     {
-        public BoletoTurista(DateTime fechaSalida) : base(fechaSalida)
+        public BoletoTurista() : base()
         {
             tipoBoleto = (int)TipoBoleto.Ejecutivo;
         }
 
-        public BoletoTurista(DateTime fechaSalida, int duracionViaje) : base(fechaSalida, duracionViaje)
+        public BoletoTurista(string destino, DateTime fechaSalida) : base(destino, fechaSalida)
+        {
+            tipoBoleto = (int)TipoBoleto.Ejecutivo;
+        }
+
+        public BoletoTurista(string destino, DateTime fechaSalida, int duracionViaje) : base(destino, fechaSalida, duracionViaje)
         {
             tipoBoleto = (int)TipoBoleto.Ejecutivo;
         }

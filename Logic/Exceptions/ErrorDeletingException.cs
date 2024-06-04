@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logic.Exceptions
 {
-    public class ErrorDeletingException : Exception
+    internal class ErrorDeletingException : Exception
     {
         public ErrorDeletingException() : base("No se han podido eliminar los elementos seleccionados")
         {

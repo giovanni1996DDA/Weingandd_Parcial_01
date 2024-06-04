@@ -31,7 +31,11 @@
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\Logic\\Logic.csproj": {
+                "projectPath": "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\Logic\\Logic.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -61,6 +65,83 @@
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
+      }
+    },
+    "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\DAO\\DAO.csproj": {
+      "restore": {
+        "projectUniqueName": "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\DAO\\DAO.csproj",
+        "projectName": "DAO",
+        "projectPath": "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\DAO\\DAO.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {
+              "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\Domain\\Domain.csproj": {
+                "projectPath": "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\Domain\\Domain.csproj"
+              },
+              "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\Services\\Services.csproj": {
+                "projectPath": "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\Services\\Services.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
+    "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\Domain\\Domain.csproj": {
+      "restore": {
+        "projectUniqueName": "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\Domain\\Domain.csproj",
+        "projectName": "Domain",
+        "projectPath": "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\Domain\\Domain.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
+    "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\Logic\\Logic.csproj": {
+      "restore": {
+        "projectUniqueName": "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\Logic\\Logic.csproj",
+        "projectName": "Logic",
+        "projectPath": "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\Logic\\Logic.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {
+              "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\DAO\\DAO.csproj": {
+                "projectPath": "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\DAO\\DAO.csproj"
+              },
+              "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\Domain\\Domain.csproj": {
+                "projectPath": "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\Domain\\Domain.csproj"
+              },
+              "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\Services\\Services.csproj": {
+                "projectPath": "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\Services\\Services.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
+      }
+    },
+    "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\Services\\Services.csproj": {
+      "restore": {
+        "projectUniqueName": "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\Services\\Services.csproj",
+        "projectName": "Services",
+        "projectPath": "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\Services\\Services.csproj",
+        "frameworks": {
+          "net48": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net48": {}
       }
     }
   }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logic.Exceptions
 {
-    public class NoBoletosFoundException : Exception
+    internal class NoBoletosFoundException : Exception
     {
         public NoBoletosFoundException() : base("No se encontró ningun boleto con el criterio de búsqueda seleccionado")
         { 

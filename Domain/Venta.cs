@@ -12,9 +12,10 @@ namespace Domain
         public DateTime fechaVenta { get; set; }
         public List<Boleto> BoletosVendidos { get; set; }
 
-        public Venta(DateTime fechaDeVenta) 
+        public Venta(DateTime? fechaDeVenta = null)
         {
-            fechaVenta = fechaDeVenta;
+            fechaVenta = fechaDeVenta ?? DateTime.Today;
+            BoletosVendidos = new List<Boleto>();
         }
     }
 }

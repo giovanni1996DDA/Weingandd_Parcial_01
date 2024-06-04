@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logic.Exceptions
 {
-    public class UnespecifiedDurationTimeException : Exception
+    internal class UnespecifiedDurationTimeException : Exception
     {
         public UnespecifiedDurationTimeException() : base("No se puede estimar una fecha de regreso si no hay una duracion estimada") 
         {

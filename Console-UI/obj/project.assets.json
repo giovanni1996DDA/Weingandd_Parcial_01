@@ -1,11 +1,80 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {}
+    "net7.0": {
+      "DAO/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "Domain": "1.0.0",
+          "Services": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DAO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DAO.dll": {}
+        }
+      },
+      "Domain/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Domain.dll": {}
+        }
+      },
+      "Logic/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "DAO": "1.0.0",
+          "Domain": "1.0.0",
+          "Services": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Logic.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Logic.dll": {}
+        }
+      },
+      "Services/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Services.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "DAO/1.0.0": {
+      "type": "project",
+      "path": "../DAO/DAO.csproj",
+      "msbuildProject": "../DAO/DAO.csproj"
+    },
+    "Domain/1.0.0": {
+      "type": "project",
+      "path": "../Domain/Domain.csproj",
+      "msbuildProject": "../Domain/Domain.csproj"
+    },
+    "Logic/1.0.0": {
+      "type": "project",
+      "path": "../Logic/Logic.csproj",
+      "msbuildProject": "../Logic/Logic.csproj"
+    },
+    "Services/1.0.0": {
+      "type": "project",
+      "path": "../Services/Services.csproj",
+      "msbuildProject": "../Services/Services.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net7.0": []
+    "net7.0": [
+      "Logic >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Juan\\.nuget\\packages\\": {},
@@ -38,7 +107,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\Logic\\Logic.csproj": {
+              "projectPath": "F:\\Backup\\Escritorio\\facultad\\3 Año\\Weingand tesis\\Parcial 01\\Parcial 01 Weingand\\Logic\\Logic.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

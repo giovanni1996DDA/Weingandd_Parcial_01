@@ -23,6 +23,8 @@ namespace Logic
                 return _instance;
             }
         }
+        //constructor privado para que no se instancie
+        VentaLogic() { }
         #endregion
 
         public void Delete(Venta deleteVenta)
@@ -93,11 +95,11 @@ namespace Logic
 
             if (ventaDao.Exists(obj))
             {
-                addVenta(obj);
+                updateVenta(obj);
             }
             else
             {
-                updateVenta(obj);
+                addVenta(obj);
             }
         }
 
@@ -105,9 +107,13 @@ namespace Logic
         {
             VentaDao ventaDao = VentaDao.Instance;
 
+            //Debo tener al menos un boleto
+            if (venta.BoletosVendidos.Count < 1)
+                throw new EmptyVentasException();
+
             try
             {
-                ventaDao.Update(venta);
+                ventaDao.Add(venta);
             }
             catch (Exception ex)
             {

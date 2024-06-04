@@ -9,19 +9,24 @@ namespace Domain
         public readonly double costoEmbarque = 9950.0;
 
         public int tipoBoleto;
+        public string destino { get; set; }
         public DateTime FechaSalida { get; set; }
         public int Numero { get; set; }
-        public int TiempoEnDias { get; set; }
+        public int? TiempoEnDias { get; set; }
 
         //Si el boleto es solo de ida, no hace falta defnir el tiempo de duracion del viaje
-        public Boleto(DateTime fechaSalida)
+        public Boleto(string destino, DateTime? fechaSalida)
         {
-            this.FechaSalida = fechaSalida;
+            this.FechaSalida = fechaSalida ?? DateTime.Now;
         }
-        public Boleto(DateTime fechaSalida, int tiempoDias)
+        public Boleto(string destino, DateTime? fechaSalida, int tiempoDias)
         {
-            this.FechaSalida = fechaSalida;
+            this.FechaSalida = fechaSalida ?? DateTime.Now;
             this.TiempoEnDias = tiempoDias;
+        }
+
+        protected Boleto()
+        {
         }
         //public abstract double getCostoBoleto();
 
@@ -31,8 +36,8 @@ namespace Domain
 
             sb.AppendLine($"Boleto {Numero.ToString()}");
             sb.AppendLine($"Fecha salida: {FechaSalida.ToString("d")}");
-            sb.AppendLine($"Precio: {getCostoBoleto()}");
-            sb.AppendLine($"Fecha regreso: {CalcularRegreso():d}");
+            //sb.AppendLine($"Precio: {getCostoBoleto()}");
+            //sb.AppendLine($"Fecha regreso: {CalcularRegreso():d}");
 
             return sb.ToString();
         }*/

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logic.Exceptions
 {
-    public class NoVentasFoundException : Exception
+    internal class NoVentasFoundException : Exception
     {
         public NoVentasFoundException() : base("No se encontró ninguna venta con el criterio de búsqueda seleccionado") 
         { 

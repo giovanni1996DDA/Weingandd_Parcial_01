@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logic.Exceptions
 {
-    public class VentaDoesNotExistException : Exception
+    internal class VentaDoesNotExistException : Exception
     {
         public VentaDoesNotExistException() : base("La venta no existe")
         {

@@ -7,14 +7,66 @@
   "targets": {
     ".NETCoreApp,Version=v7.0": {
       "Console-UI/1.0.0": {
+        "dependencies": {
+          "Logic": "1.0.0"
+        },
         "runtime": {
           "Console-UI.dll": {}
+        }
+      },
+      "DAO/1.0.0": {
+        "dependencies": {
+          "Domain": "1.0.0",
+          "Services": "1.0.0"
+        },
+        "runtime": {
+          "DAO.dll": {}
+        }
+      },
+      "Domain/1.0.0": {
+        "runtime": {
+          "Domain.dll": {}
+        }
+      },
+      "Logic/1.0.0": {
+        "dependencies": {
+          "DAO": "1.0.0",
+          "Domain": "1.0.0",
+          "Services": "1.0.0"
+        },
+        "runtime": {
+          "Logic.dll": {}
+        }
+      },
+      "Services/1.0.0": {
+        "runtime": {
+          "Services.dll": {}
         }
       }
     }
   },
   "libraries": {
     "Console-UI/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DAO/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Logic/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Services/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
