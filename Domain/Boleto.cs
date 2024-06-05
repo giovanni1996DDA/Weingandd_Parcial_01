@@ -12,6 +12,8 @@ namespace Domain
         public string destino { get; set; }
         public DateTime FechaSalida { get; set; }
         public int Numero { get; set; }
+        public int NumeroEnVenta { get; set; }
+        public int IDVenta { get; set; }
         public int? TiempoEnDias { get; set; }
 
         //Si el boleto es solo de ida, no hace falta defnir el tiempo de duracion del viaje

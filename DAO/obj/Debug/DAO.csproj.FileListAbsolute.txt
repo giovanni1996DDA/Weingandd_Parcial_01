@@ -9,5 +9,3 @@ F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weinga
 F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\DAO\obj\Debug\DAO.csproj.CopyComplete
 F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\DAO\obj\Debug\DAO.dll
 F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\DAO\obj\Debug\DAO.pdb
-F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\DAO\bin\Debug\System.Configuration.ConfigurationManager.dll
-F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\DAO\bin\Debug\System.Configuration.ConfigurationManager.xml

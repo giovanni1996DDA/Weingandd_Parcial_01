@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAO.Interfaces
 {
-    public interface IVentaoDao : IGenericDao<Venta>
+    public interface IVentaDao : IGenericDao<Venta>
     {
         Venta GetById(int id);
     }

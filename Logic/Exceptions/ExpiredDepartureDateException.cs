@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Logic.Exceptions
 {
-    internal class ExpiredDepartureDateException : Exception
+    public class ExpiredDepartureDateException : Exception
     {
-        public ExpiredDepartureDateException(string destino) : base($"Para el boleto con destino {destino}, la fecha de salida es anterior a la fecha de hoy") 
+        public ExpiredDepartureDateException() : base($"La fecha de salida del boleto se encuentra en el pasado.") 
         {
 
         }

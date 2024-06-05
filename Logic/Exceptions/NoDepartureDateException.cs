@@ -8,7 +8,7 @@ namespace Logic.Exceptions
 {
     public class NoDepartureDateException : Exception
     {
-        public NoDepartureDateException(string destino) : base ($"El boleto con destino a {destino} no posee fecha de salida.") 
+        public NoDepartureDateException() : base ($"El boleto debe tener fecha de salida.") 
         {
 
         }

@@ -11,5 +11,3 @@ F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weinga
 F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Logic\obj\Debug\Logic.csproj.CopyComplete
 F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Logic\obj\Debug\Logic.dll
 F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Logic\obj\Debug\Logic.pdb
-F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Logic\bin\Debug\System.Configuration.ConfigurationManager.dll
-F:\Backup\Escritorio\facultad\3 Año\Weingand tesis\Parcial 01\Parcial 01 Weingand\Logic\bin\Debug\System.Configuration.ConfigurationManager.xml

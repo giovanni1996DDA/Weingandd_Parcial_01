@@ -11,7 +11,6 @@ namespace Domain
         public int id { get; set; }
         public DateTime fechaVenta { get; set; }
         public List<Boleto> BoletosVendidos { get; set; }
-
         public Venta(DateTime? fechaDeVenta = null)
         {
             fechaVenta = fechaDeVenta ?? DateTime.Today;

@@ -26,6 +26,17 @@ namespace DAO.Factory
                     throw new NotImplementedException();
             }
         }
+
+        public static IVentaDao VentaDao
+        {
+            get
+            {
+                if (backendType == (int)BackendType.Memory)
+                    return DAO.Implementations.Memory.VentaDao.Instance;
+                else
+                    throw new NotImplementedException();
+            }
+        }
     }
 
     internal enum BackendType

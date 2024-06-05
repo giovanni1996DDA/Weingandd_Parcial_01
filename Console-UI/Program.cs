@@ -1,5 +1,7 @@
-﻿using Domain;
+﻿using Console_UI.Helpers;
+using Domain;
 using Logic;
+using Logic.Exceptions;
 using System.Globalization;
 
 namespace Console_UI
@@ -8,94 +10,231 @@ namespace Console_UI
     {
         static void Main(string[] args)
         {
-            PrintHeaderOpts();
-
-            int optHeader = int.Parse(Console.ReadLine());
-
             Vendedora catalina = Vendedora.Instance;
 
-            while (optHeader != (int)HeaderOpts.Salir)
-            {
-                catalina.AbrirVenta();
-                Console.WriteLine("");
-                Console.WriteLine("Se ha abierto una compra.");
-                Console.WriteLine("");
+            bool exitLoop = false;
 
+            while (!exitLoop)
+            {
+                PrintHeaderOpts();
+                HeaderOpts optHeader = NotNullableInput.notNullableInputEnum<HeaderOpts>();
+
+                switch (optHeader) 
+                {
+                    case HeaderOpts.Visualizar_Compra:
+                        throw new NotImplementedException();
+                        break;
+                    case HeaderOpts.Crear_Compra:
+                        ModuleCrearVenta(catalina);
+                        break;
+                    case HeaderOpts.Modificar_Compra:
+                        throw new NotImplementedException();
+                        break;
+                    case HeaderOpts.Eliminar_Compra:
+                        throw new NotImplementedException();
+                        break;
+                    case HeaderOpts.Salir:
+                        exitLoop = true;
+                        break;
+                }
+            }
+
+            Console.WriteLine("Gracias por confiar en Nekomata Airlines. Que tenga buen viaje!");
+        }
+
+        private static void ModuleCrearVenta(Vendedora catalina) 
+        {
+            catalina.AbrirVenta();
+            Console.WriteLine("");
+            Console.WriteLine("Se ha abierto una compra.");
+            Console.WriteLine("");
+
+            bool exitLoop = false;
+
+            //while (optFooter != FooterOpts.Cerrar_Venta && optFooter != FooterOpts.Salir_Sin_Guardar)
+            while (!exitLoop)
+            {
                 PrintFooterOpts();
 
-                int optFooter = int.Parse(Console.ReadLine());
+                FooterOpts optFooter = NotNullableInput.notNullableInputEnum<FooterOpts>();
 
-                while (optFooter != (int)FooterOpts.CerrarVenta)
+                switch (optFooter)
                 {
-                    switch (optFooter)
-                    {
-                        case (int)FooterOpts.ListarBoletos:
-                            ModuleListarBoletos(catalina);
-                            break;
-                        case (int)FooterOpts.AgregarBoleto:
-                            ModuleAgregarBoleto(catalina);
-                            Console.WriteLine("El boleto se agregó correctamente.");
-                            break;
-                        case (int)FooterOpts.ModificarBoleto:
-                            Console.WriteLine("Lo siento, esta opción aún no se encuentra activa.");
-                            break;
-                        case (int)FooterOpts.EliminarBoletos:
-                            ModuleEliminarBoletos(catalina);
-                            break;
-                        case (int)FooterOpts.PrecioBoleto:
+                    case FooterOpts.Listar_Boletos:
+                        ModuleListarBoletos(catalina);
+                        break;
+                    case FooterOpts.Agregar_Boleto:
+                        ModuleAgregarBoleto(catalina);
+                        break;
+                    case FooterOpts.Modificar_Boleto:
+                        Console.WriteLine("Lo siento, esta opción aún no se encuentra activa.");
+                        break;
+                    case FooterOpts.Eliminar_Boletos:
+                        ModuleEliminarBoletos(catalina);
+                        break;
+                    case FooterOpts.Obtener_Precio_Boleto:
+                        ModuleObtenerPrecioBoleto(catalina);
+                        break;
+                    case FooterOpts.Obtener_Total_Venta:
+                        ModuleObtenerTotalVenta(catalina);
+                        break;
+                    case FooterOpts.Cerrar_Venta:
+                        ModuleCerrarVenta(catalina);
+                        exitLoop = true;
+                        break;
+                    case FooterOpts.Salir_Sin_Guardar:
+                        exitLoop = true;
+                        break;
+                }            
+            }
 
-                            break;
-                        case (int)FooterOpts.TotalVenta:
+            Console.WriteLine();
+            Console.WriteLine("Desea realizar alguna otra operación?");
 
-                            break;
-                        case (int)FooterOpts.CerrarVenta:
+        }
 
-                            break;
-                    }
+        private static void ModuleCerrarVenta(Vendedora catalina)
+        {
+            try
+            {
+                int idVenta = catalina.CerrarVenta();
 
-                    PrintFooterOpts();
+                Console.WriteLine($"Sus boletos han sido reservados correctamente con el id de venta {idVenta}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
 
-                    optFooter = int.Parse(Console.ReadLine());
-                }
+        private static void ModuleObtenerTotalVenta(Vendedora catalina)
+        {
+            try
+            {
+                Console.WriteLine($"El total de la venta es: {catalina.ObtenerTotalVentaEnCurso()}");
+                Console.WriteLine();
+            }
+            catch (Exception ex)
+            { 
+                Console.WriteLine(ex.Message); 
+            }
+            finally { 
+                Console.WriteLine(); 
+            }
+        }
+
+        private static void ModuleObtenerPrecioBoleto(Vendedora catalina)
+        {
+            Console.WriteLine("Seleccione el boleto del cual desea saber el precio. Elija 0 para salir:");
+            Console.WriteLine();
+
+            int nroBoletoEnVenta = NotNullableInput.notNullableInputInt();
+
+            try
+            {
+                Console.WriteLine($"El precio del boleto es de ${catalina.ObtenerPrecioBoleto(nroBoletoEnVenta)}");
+                Console.WriteLine();
+            }
+            catch (BoletoEnVentaDoesNotExistException)
+            {
+                Console.WriteLine($"El boleto {nroBoletoEnVenta} no existe. Reintente por favor.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.WriteLine();
             }
         }
 
         private static void ModuleAgregarBoleto(Vendedora catalina)
         {
             Console.WriteLine("Elija un destino:");
-            string destino = Console.ReadLine().ToUpper();
+            string destino = NotNullableInput.notNullableInputString().ToUpper();
+
+            Console.WriteLine();
 
             Console.WriteLine("Por favor, ingrese una fecha (formato: dd/mm/yyyy):");
-            DateTime fechaSalida = parseFecha();
+            DateTime fechaSalida = NotNullableInput.notNullableInputDate();
+
+            Console.WriteLine();
 
             Console.WriteLine("Elija la duración del viaje, si  es que es un viaje de ida y vuelta. Si no lo es, ingrese 0.");
-            int duracion = parseInt();
+            int duracion = NotNullableInput.notNullableInputInt();
+
+            Console.WriteLine();
 
             Console.WriteLine("Elija un tipo de boleto:");
             Console.WriteLine($"{(int)TipoBoleto.Turista} - Turista");
             Console.WriteLine($"{(int)TipoBoleto.Ejecutivo} - Ejecutivo");
-            TipoBoleto tipoBoleto = (TipoBoleto)int.Parse(Console.ReadLine());
+            TipoBoleto tipoBoleto = NotNullableInput.notNullableInputEnum<TipoBoleto>();
+            Console.WriteLine();
 
-            catalina.AgregarBoleto(destino, fechaSalida, duracion, tipoBoleto);
+            try
+            {
+                catalina.AgregarBoleto(destino, fechaSalida, duracion, tipoBoleto);
+                Console.WriteLine("El boleto se agrego correctamente.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally 
+            {
+                Console.WriteLine();
+            }
+            
         }
 
         private static void ModuleEliminarBoletos(Vendedora catalina)
         {
-            Console.WriteLine("Elija un destino (Tenga en cuenta que se eliminarán todos los boletos con el mismo destino. Elija 0 si desea cancelar.):");
-            string destino = Console.ReadLine().ToUpper();
+            ModuleListarBoletos(catalina);
 
-            if (destino == "0")
+            Console.WriteLine("Elija el boleto a eliminar. Elija 0 para salir:");
+            int nroBoletoEnVenta = NotNullableInput.notNullableInputInt();
+
+            if (nroBoletoEnVenta == 0)
                 return;
 
-            catalina.EliminarBoletos(destino);
+            Console.WriteLine();
+
+            try
+            {
+                catalina.EliminarBoletos(nroBoletoEnVenta);
+                Console.WriteLine("El boleto se eliminó correctamente.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally 
+            {
+                Console.WriteLine();
+            }
+
+            
         }
         private static void ModuleListarBoletos(Vendedora catalina)
         {
             Console.WriteLine("A continuación, se listan los boletos activos:");
-            Console.WriteLine("");
-            Console.WriteLine(catalina.ListarBoletos());
-        }
+            Console.WriteLine();
 
+            try
+            {
+                Console.WriteLine(catalina.ListarBoletos());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally 
+            {
+                Console.WriteLine();
+            }
+            
+        }
         private static void PrintHeaderOpts()
         {
             Console.WriteLine("");
@@ -103,73 +242,38 @@ namespace Console_UI
             Console.WriteLine("");
             Console.WriteLine("¿Que operación desea realizar?");
             Console.WriteLine("");
-            Console.WriteLine($"{(int)HeaderOpts.CrearVenta} - Crear Compra");
-            Console.WriteLine($"{(int)HeaderOpts.Salir} - Salir");
+            foreach(var value in Enum.GetValues(typeof(HeaderOpts)))
+            {
+                Console.WriteLine($"{(int)value} - {value}");
+            }
         }
-
         private static void PrintFooterOpts()
         {
             Console.WriteLine("¿Que operación desea realizar?");
             Console.WriteLine("");
-            Console.WriteLine($"{(int)FooterOpts.ListarBoletos}  - Listar Boletos");
-            Console.WriteLine($"{(int)FooterOpts.AgregarBoleto}  - Agregar Boleto");
-            Console.WriteLine($"{(int)FooterOpts.ModificarBoleto}  - Modificar Boleto");
-            Console.WriteLine($"{(int)FooterOpts.EliminarBoletos}  - Eliminar Boleto");
-            Console.WriteLine($"{(int)FooterOpts.PrecioBoleto}  - Calcular precio de un Boleto");
-            Console.WriteLine($"{(int)FooterOpts.TotalVenta}  - Calcular total de la Venta");
-            Console.WriteLine($"{(int)FooterOpts.CerrarVenta}  - Cerrar Compra");
-        }
-
-        private static DateTime parseFecha()
-        {
-            DateTime fecha;
-            while (true)
+            foreach (var value in Enum.GetValues(typeof(FooterOpts)))
             {
-                string entrada = Console.ReadLine();
-
-                if (DateTime.TryParseExact(entrada, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out fecha))
-                {
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Fecha no válida. Intente nuevamente.");
-                }
+                Console.WriteLine($"{(int)value} - {value}");
             }
-            return fecha;
-        }
-        public static int parseInt()
-        {
-            int n;
-            while (true)
-            {
-                string entrada = Console.ReadLine();
-
-                if (int.TryParse(entrada, out n))
-                {
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Número no válido. Intente nuevamente.");
-                }
-            }
-            return n;
         }
         public enum HeaderOpts
         {
-            CrearVenta  = 1,
-            Salir       = 2,
+            Visualizar_Compra   = 1,
+            Crear_Compra        = 2,
+            Modificar_Compra    = 3,
+            Eliminar_Compra     = 4,
+            Salir               = 5,
         }
         public enum FooterOpts
         {
-            ListarBoletos   = 1,
-            AgregarBoleto   = 2,
-            ModificarBoleto = 3,
-            EliminarBoletos = 4,
-            PrecioBoleto    = 5,
-            TotalVenta      = 6,
-            CerrarVenta     = 7,
+            Listar_Boletos          = 1,
+            Agregar_Boleto          = 2,
+            Modificar_Boleto        = 3,
+            Eliminar_Boletos        = 4,
+            Obtener_Precio_Boleto   = 5,
+            Obtener_Total_Venta     = 6,
+            Cerrar_Venta            = 7,
+            Salir_Sin_Guardar       = 8
         }
     }
 }

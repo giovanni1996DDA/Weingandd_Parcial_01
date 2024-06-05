@@ -8,8 +8,8 @@ namespace DAO.Interfaces
 {
     public interface IGenericDao<T>
     {
-        void Add(T obj);
-        bool Update(T obj);
+        int Add(T obj);
+        int Update(T obj);
         bool Remove(T obj);
         bool Exists(T obj);
         List<T> GetAll();

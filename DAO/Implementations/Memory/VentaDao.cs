@@ -1,4 +1,5 @@
-﻿using DAO.Interfaces;
+﻿using DAO.Exceptions;
+using DAO.Interfaces;
 using Domain;
 using Services.Facade;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Linq;
 
 namespace DAO.Implementations.Memory
 {
-    public sealed class VentaDao : IVentaoDao
+    public sealed class VentaDao : IVentaDao
     {
         private static List<Venta> _Venta = new List<Venta>();
 
@@ -22,12 +23,20 @@ namespace DAO.Implementations.Memory
             }
         }
         #endregion
-        public void Add(Venta obj)
+        /// <summary>
+        /// Agrega una venta en la BBDD con un numero de ID unico autoincremental
+        /// </summary>
+        /// <param name="obj">Boleto a agregar</param>
+        /// <returns>Retorna el id de la venta creada</returns>
+        public int Add(Venta obj)
         {
-            obj.id = _Venta.Max(b => b.id) + 1;
+
+            obj.id = _Venta.Any() ? _Venta.Max(b => b.id) + 1 : 0;
             _Venta.Add(obj);
 
             LoggerService.WriteLog($"Se agregó la venta {obj.id}", TraceLevel.Info);
+
+            return obj.id;
         }
 
         public List<Venta> GetAll()
@@ -40,18 +49,15 @@ namespace DAO.Implementations.Memory
             return _Venta.FirstOrDefault(b => b.id == id);
         }
 
-        public bool Update(Venta venta)
+        public int Update(Venta venta)
         {
-            Venta ventaToUpdate = _Venta.FirstOrDefault(b => b.id == venta.id);
-
-            if (ventaToUpdate == null)
-                return false;
+            Venta ventaToUpdate = _Venta.FirstOrDefault(b => b.id == venta.id) ?? throw new VentaDoesNotExistException();
 
             ventaToUpdate.fechaVenta = venta.fechaVenta;
 
             LoggerService.WriteLog($"Se actualizó la venta {venta.id}", TraceLevel.Info);
 
-            return true;
+            return venta.id;
         }
 
         public bool Remove(Venta removeVenta)

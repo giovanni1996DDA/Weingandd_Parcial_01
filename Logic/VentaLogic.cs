@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAO.Factory;
 
 namespace Logic
 {
@@ -29,13 +30,11 @@ namespace Logic
 
         public void Delete(Venta deleteVenta)
         {
-            VentaDao ventaDao = VentaDao.Instance;
-
             bool wasDeleted = false;
 
             try
             {
-                wasDeleted = ventaDao.Remove(deleteVenta);
+                wasDeleted = FactoryDao.VentaDao.Remove(deleteVenta);
             }
             catch (Exception ex)
             {
@@ -47,13 +46,11 @@ namespace Logic
         }
         public List<Venta> GetAll()
         {
-            VentaDao ventaDao = VentaDao.Instance;
-
             List<Venta> ventas = new List<Venta>();
 
             try
             {
-                ventas = ventaDao.GetAll();
+                ventas = FactoryDao.VentaDao.GetAll();
             }
             catch (Exception ex)
             {
@@ -68,13 +65,11 @@ namespace Logic
 
         public Venta GetByID(int id)
         {
-            VentaDao ventaDao = VentaDao.Instance;
-
             Venta venta;
 
             try
             {
-                venta = ventaDao.GetById(id);
+                venta = FactoryDao.VentaDao.GetById(id);
 
             }
             catch(Exception ex)
@@ -88,32 +83,15 @@ namespace Logic
 
             return venta;
         }
-
-        public void SaveOrUpdate(Venta obj)
+        public int Save(Venta venta)
         {
-            VentaDao ventaDao = VentaDao.Instance;
-
-            if (ventaDao.Exists(obj))
-            {
-                updateVenta(obj);
-            }
-            else
-            {
-                addVenta(obj);
-            }
-        }
-
-        private void addVenta(Venta venta)
-        {
-            VentaDao ventaDao = VentaDao.Instance;
-
             //Debo tener al menos un boleto
             if (venta.BoletosVendidos.Count < 1)
                 throw new EmptyVentasException();
 
             try
             {
-                ventaDao.Add(venta);
+                return FactoryDao.VentaDao.Add(venta);
             }
             catch (Exception ex)
             {
@@ -121,18 +99,21 @@ namespace Logic
             }
         }
 
-        private void updateVenta(Venta venta)
+        public int Update(Venta venta)
         {
-            VentaDao ventaDao = VentaDao.Instance;
-
             try
             {
-                ventaDao.Update(venta);
+                return FactoryDao.VentaDao.Update(venta);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+        }
+
+        public double getTotalVenta(Venta venta)
+        {
+            return venta.BoletosVendidos.Sum(b => BoletoLogic.Instance.getCostoBoleto(b));
         }
     }
 }

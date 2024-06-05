@@ -10,17 +10,17 @@ namespace Domain
     {
         public BoletoTurista() : base()
         {
-            tipoBoleto = (int)TipoBoleto.Ejecutivo;
+            tipoBoleto = (int)TipoBoleto.Turista;
         }
 
         public BoletoTurista(string destino, DateTime fechaSalida) : base(destino, fechaSalida)
         {
-            tipoBoleto = (int)TipoBoleto.Ejecutivo;
+            tipoBoleto = (int)TipoBoleto.Turista;
         }
 
         public BoletoTurista(string destino, DateTime fechaSalida, int duracionViaje) : base(destino, fechaSalida, duracionViaje)
         {
-            tipoBoleto = (int)TipoBoleto.Ejecutivo;
+            tipoBoleto = (int)TipoBoleto.Turista;
         }
     }
 }
