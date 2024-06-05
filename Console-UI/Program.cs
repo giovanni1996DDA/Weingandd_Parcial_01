@@ -21,18 +21,14 @@ namespace Console_UI
 
                 switch (optHeader) 
                 {
-                    case HeaderOpts.Visualizar_Compra:
-                        throw new NotImplementedException();
-                        break;
                     case HeaderOpts.Crear_Compra:
                         ModuleCrearVenta(catalina);
                         break;
                     case HeaderOpts.Modificar_Compra:
-                        throw new NotImplementedException();
+                        ModuleModificarCompra(catalina);
                         break;
                     case HeaderOpts.Eliminar_Compra:
                         throw new NotImplementedException();
-                        break;
                     case HeaderOpts.Salir:
                         exitLoop = true;
                         break;
@@ -42,13 +38,78 @@ namespace Console_UI
             Console.WriteLine("Gracias por confiar en Nekomata Airlines. Que tenga buen viaje!");
         }
 
+        private static void ModuleModificarCompra(Vendedora catalina)
+        {
+
+            Console.WriteLine("");
+            Console.WriteLine("Escriba el ID de la compra que desea modificar:");
+            int id = NotNullableInput.notNullableInputInt();
+
+            try
+            {
+                ModuleCargarVenta(catalina, id);
+
+                ModuleFooter(catalina);
+            }
+            catch (Exception ex)
+            { 
+                Console.WriteLine(ex.Message);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Desea realizar alguna otra operación?");
+        }
+
+        private static void ModuleCargarVenta(Vendedora catalina, int nroVenta)
+        {
+            try
+            {
+                catalina.CargarVenta(nroVenta);
+                Console.WriteLine("");
+                Console.WriteLine($"Se ha cargado la compra con número de venta: {nroVenta}");
+                Console.WriteLine("");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         private static void ModuleCrearVenta(Vendedora catalina) 
         {
-            catalina.AbrirVenta();
-            Console.WriteLine("");
-            Console.WriteLine("Se ha abierto una compra.");
-            Console.WriteLine("");
+            try
+            {
+                ModuleAbrirVenta(catalina);
 
+                ModuleFooter(catalina);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Desea realizar alguna otra operación?");
+
+        }
+
+        private static void ModuleAbrirVenta(Vendedora catalina)
+        {
+            try
+            {
+                catalina.AbrirVenta();
+                Console.WriteLine("");
+                Console.WriteLine("Se ha abierto una compra.");
+                Console.WriteLine("");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private static void ModuleFooter(Vendedora catalina)
+        {
             bool exitLoop = false;
 
             //while (optFooter != FooterOpts.Cerrar_Venta && optFooter != FooterOpts.Salir_Sin_Guardar)
@@ -85,12 +146,8 @@ namespace Console_UI
                     case FooterOpts.Salir_Sin_Guardar:
                         exitLoop = true;
                         break;
-                }            
+                }
             }
-
-            Console.WriteLine();
-            Console.WriteLine("Desea realizar alguna otra operación?");
-
         }
 
         private static void ModuleCerrarVenta(Vendedora catalina)
@@ -99,7 +156,7 @@ namespace Console_UI
             {
                 int idVenta = catalina.CerrarVenta();
 
-                Console.WriteLine($"Sus boletos han sido reservados correctamente con el id de venta {idVenta}");
+                Console.WriteLine($"Sus boletos han sido reservados correctamente con el número de venta {idVenta}");
             }
             catch (Exception ex)
             {
@@ -115,11 +172,8 @@ namespace Console_UI
                 Console.WriteLine();
             }
             catch (Exception ex)
-            { 
-                Console.WriteLine(ex.Message); 
-            }
-            finally { 
-                Console.WriteLine(); 
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -142,10 +196,6 @@ namespace Console_UI
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                Console.WriteLine();
             }
         }
 
@@ -181,13 +231,7 @@ namespace Console_UI
             {
                 Console.WriteLine(ex.Message);
             }
-            finally 
-            {
-                Console.WriteLine();
-            }
-            
         }
-
         private static void ModuleEliminarBoletos(Vendedora catalina)
         {
             ModuleListarBoletos(catalina);
@@ -209,12 +253,8 @@ namespace Console_UI
             {
                 Console.WriteLine(ex.Message);
             }
-            finally 
-            {
-                Console.WriteLine();
-            }
 
-            
+
         }
         private static void ModuleListarBoletos(Vendedora catalina)
         {
@@ -229,11 +269,6 @@ namespace Console_UI
             {
                 Console.WriteLine(ex.Message);
             }
-            finally 
-            {
-                Console.WriteLine();
-            }
-            
         }
         private static void PrintHeaderOpts()
         {
@@ -258,11 +293,10 @@ namespace Console_UI
         }
         public enum HeaderOpts
         {
-            Visualizar_Compra   = 1,
-            Crear_Compra        = 2,
-            Modificar_Compra    = 3,
-            Eliminar_Compra     = 4,
-            Salir               = 5,
+            Crear_Compra        = 1,
+            Modificar_Compra    = 2,
+            Eliminar_Compra     = 3,
+            Salir               = 4
         }
         public enum FooterOpts
         {

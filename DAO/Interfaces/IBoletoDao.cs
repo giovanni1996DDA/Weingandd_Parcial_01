@@ -10,6 +10,7 @@ namespace DAO.Interfaces
 {
     public interface IBoletoDao : IGenericDao<Boleto>
     {
-        Boleto GetByNumber(int NumeroBoleto);
+        void DeleteBySaleID(Guid id);
+        List<Boleto> GetBySale(Guid idVenta);
     }
 }

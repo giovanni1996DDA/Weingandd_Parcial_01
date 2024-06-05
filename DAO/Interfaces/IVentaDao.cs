@@ -9,6 +9,6 @@ namespace DAO.Interfaces
 {
     public interface IVentaDao : IGenericDao<Venta>
     {
-        Venta GetById(int id);
+        Venta GetByNumber(int id);
     }
 }

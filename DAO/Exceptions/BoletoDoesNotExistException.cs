@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAO.Exceptions
 {
-    internal class BoletoDoesNotExistException : Exception
+    public class BoletoDoesNotExistException : Exception
     {
         public BoletoDoesNotExistException() : base("El boleto que se esta intentando actualizar no existe.")
         { }

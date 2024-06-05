@@ -8,8 +8,7 @@ namespace Logic.Interfaces
 {
     internal interface IGenericLogic<T>
     {
-        int Save(T obj);
-        int Update(T obj);
+        Guid SaveOrUpdate(T obj);
         void Delete(T obj);
         List<T> GetAll(); 
     }

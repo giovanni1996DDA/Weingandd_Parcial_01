@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace DAO.Exceptions
 {
-    internal class VentaDoesNotExistException : Exception
+    public class VentaDoesNotExistException : Exception
     {
-        public VentaDoesNotExistException() : base("La venta que se esta intentando actualizar no existe.") { }
+        public VentaDoesNotExistException() : base("La venta no existe.") { }
     }
 }

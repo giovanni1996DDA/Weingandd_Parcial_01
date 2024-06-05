@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,11 @@ namespace DAO.Interfaces
 {
     public interface IGenericDao<T>
     {
-        int Add(T obj);
-        int Update(T obj);
+        Guid Add(T obj);
+        Guid Update(T obj);
         bool Remove(T obj);
         bool Exists(T obj);
+        T GetById(Guid id);
         List<T> GetAll();
     }
 }

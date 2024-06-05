@@ -9,11 +9,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAO.Factory;
+using DAO.Exceptions;
 
 namespace Logic
 {
-    public class VentaLogic : IVentaLogic
+    public class VentaLogic : IGenericLogic<Venta>
     {
+        private List<Venta> _VentaCache = new List<Venta>();
         #region singleton
         private readonly static VentaLogic _instance = new VentaLogic();
 
@@ -63,27 +65,56 @@ namespace Logic
             return ventas;
         }
 
-        public Venta GetByID(int id)
+        public Venta GetByID(Guid id)
         {
-            Venta venta;
-
             try
             {
-                venta = FactoryDao.VentaDao.GetById(id);
+                Venta venta = FactoryDao.VentaDao.GetById(id);
+                venta.BoletosVendidos = BoletoLogic.Instance.GetBySaleID(venta.id);
+                return venta;
 
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 throw ex;
             }
-
-            if (venta == null)
-                throw new VentaDoesNotExistException();
-
-            return venta;
         }
-        public int Save(Venta venta)
+
+        public Venta GetByNumber(int numeroVenta)
+        {
+            try
+            {
+                Venta venta = FactoryDao.VentaDao.GetByNumber(numeroVenta);
+                venta.BoletosVendidos = BoletoLogic.Instance.GetBySaleID(venta.id);
+                return venta;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public Guid SaveOrUpdate(Venta venta)
+        {
+            try
+            {
+                if (VentaExists(venta))
+                {
+                    Update(venta);
+                }
+                else
+                {
+                    Save(venta);
+                }
+                return venta.id;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        private Guid Save(Venta venta)
         {
             //Debo tener al menos un boleto
             if (venta.BoletosVendidos.Count < 1)
@@ -99,7 +130,7 @@ namespace Logic
             }
         }
 
-        public int Update(Venta venta)
+        private Guid Update(Venta venta)
         {
             try
             {
@@ -114,6 +145,44 @@ namespace Logic
         public double getTotalVenta(Venta venta)
         {
             return venta.BoletosVendidos.Sum(b => BoletoLogic.Instance.getCostoBoleto(b));
+        }
+
+        //Por alguna razon no entra al catch de acá, sinoq ue entra al catch qye lo llama anterior
+        //public bool VentaExists(Venta venta)
+        //{
+        //    if (_VentaCache.Any(v => v.id == venta.id))
+        //        return true;
+
+        //    try
+        //    {
+        //        Venta ventaCache = FactoryDao.VentaDao.GetById(venta.id);
+        //        _VentaCache.Add(ventaCache);
+        //        return true;
+        //    }
+        //    catch (VentaDoesNotExistException)
+        //    {
+        //        return false;
+        //    }
+        //}
+        public bool VentaExists(Venta venta)
+        {
+            if (_VentaCache.Any(v => v.id == venta.id))
+                return true;
+
+            try
+            {
+                Venta ventaCache = FactoryDao.VentaDao.GetById(venta.id);
+                _VentaCache.Add(ventaCache);
+                return true;
+            }
+            catch (VentaDoesNotExistException)
+            {
+                return false;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

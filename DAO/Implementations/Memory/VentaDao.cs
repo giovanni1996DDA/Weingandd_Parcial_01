@@ -2,6 +2,7 @@
 using DAO.Interfaces;
 using Domain;
 using Services.Facade;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -28,10 +29,10 @@ namespace DAO.Implementations.Memory
         /// </summary>
         /// <param name="obj">Boleto a agregar</param>
         /// <returns>Retorna el id de la venta creada</returns>
-        public int Add(Venta obj)
+        public Guid Add(Venta obj)
         {
 
-            obj.id = _Venta.Any() ? _Venta.Max(b => b.id) + 1 : 0;
+            obj.NroVenta = _Venta.Any() ? _Venta.Max(b => b.NroVenta) + 1 : 0;
             _Venta.Add(obj);
 
             LoggerService.WriteLog($"Se agregó la venta {obj.id}", TraceLevel.Info);
@@ -44,12 +45,12 @@ namespace DAO.Implementations.Memory
             return (_Venta);
         }
 
-        public Venta GetById(int id)
+        public Venta GetByNumber(int nroVenta)
         {
-            return _Venta.FirstOrDefault(b => b.id == id);
+            return _Venta.FirstOrDefault(b => b.NroVenta == nroVenta) ?? throw new VentaDoesNotExistException();
         }
 
-        public int Update(Venta venta)
+        public Guid Update(Venta venta)
         {
             Venta ventaToUpdate = _Venta.FirstOrDefault(b => b.id == venta.id) ?? throw new VentaDoesNotExistException();
 
@@ -62,7 +63,7 @@ namespace DAO.Implementations.Memory
 
         public bool Remove(Venta removeVenta)
         {
-            bool wasDeleted = _Venta.Remove(_Venta.FirstOrDefault(b => b.id == removeVenta.id));
+            bool wasDeleted = _Venta.Remove(_Venta.FirstOrDefault(b => b.NroVenta == removeVenta.NroVenta));
 
             if (!wasDeleted)
                 return false;
@@ -75,6 +76,11 @@ namespace DAO.Implementations.Memory
         public bool Exists(Venta obj)
         {
             return _Venta.Any(b => b.id == obj.id); ;
+        }
+
+        public Venta GetById(Guid id)
+        {
+            return _Venta.FirstOrDefault(v => v.id == id) ?? throw new VentaDoesNotExistException();
         }
     }
 }

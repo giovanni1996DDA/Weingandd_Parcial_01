@@ -35,6 +35,19 @@ namespace Logic
 
             ventaEnCurso = new Venta();
         }
+        public void CargarVenta(int idVenta)
+        {
+            try
+            {
+                ventaEnCurso = VentaLogic.Instance.GetByNumber(idVenta);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
         public void AgregarBoleto(string destino, DateTime fechaSalida, int? duracion = null, TipoBoleto tipoBoleto = TipoBoleto.Base)
         {
             
@@ -110,27 +123,31 @@ namespace Logic
         }
         public int CerrarVenta() 
         {
+            if (VentaLogic.Instance.VentaExists(ventaEnCurso))
+                BoletoLogic.Instance.DeleteBySaleID(ventaEnCurso.id);
+
             try
             {
-
-                int idVenta = VentaLogic.Instance.Save(ventaEnCurso);
+                Guid idVenta = VentaLogic.Instance.SaveOrUpdate(ventaEnCurso);
 
                 foreach (Boleto boleto in ventaEnCurso.BoletosVendidos)
                 {
                     boleto.IDVenta = idVenta;
-                    BoletoLogic.Instance.Save(boleto);
+                    BoletoLogic.Instance.SaveOrUpdate(boleto);
                 }
                 //Chequear si al ponerlo null tambien me lo nullea en BBDD al ser un puntero. si lo hace, crear new venta en dao
+                
+                int nroVentaCerrada = ventaEnCurso.NroVenta;
+                
                 ventaEnCurso = null;
 
-                return idVenta;
+                return nroVentaCerrada;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-
         public double ObtenerPrecioBoleto(int NumeroEnVenta) 
         {
             Boleto boleto = ventaEnCurso.BoletosVendidos.FirstOrDefault(b => b.NumeroEnVenta == NumeroEnVenta) 

@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\BoletoDoesNotExistException.cs" />
+    <Compile Include="Exceptions\BoletoDoesNotExistForSaleException.cs" />
     <Compile Include="Exceptions\VentaDoesNotExistException.cs" />
     <Compile Include="Factory\FactoryDao.cs" />
     <Compile Include="Implementations\Memory\BoletoDao.cs" />

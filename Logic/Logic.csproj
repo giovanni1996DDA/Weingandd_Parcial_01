@@ -52,11 +52,9 @@
     <Compile Include="Exceptions\NoDepartureDateException.cs" />
     <Compile Include="Exceptions\NoVentasFoundException.cs" />
     <Compile Include="Exceptions\UnespecifiedDurationTimeException.cs" />
-    <Compile Include="Exceptions\VentaDoesNotExistException.cs" />
     <Compile Include="Exceptions\VentaEnCursoAlreadyExistsException.cs" />
     <Compile Include="Exceptions\VentaEnCursoHasNoBoletoException.cs" />
     <Compile Include="Interfaces\IGenericLogic.cs" />
-    <Compile Include="Interfaces\IVentaLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VentaLogic.cs" />
     <Compile Include="Vendedora.cs" />

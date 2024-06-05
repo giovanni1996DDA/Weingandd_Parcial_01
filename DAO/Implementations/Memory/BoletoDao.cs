@@ -1,7 +1,10 @@
 ﻿using DAO.Exceptions;
+using DAO.Factory;
 using DAO.Interfaces;
 using Domain;
 using Services.Facade;
+using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
@@ -12,6 +15,7 @@ namespace DAO.Implementations.Memory
     public sealed class BoletoDao : IBoletoDao
     {
         private static List<Boleto> _Boletos = new List<Boleto>();
+
 
         #region singleton
         private readonly static BoletoDao _instance = new BoletoDao();
@@ -28,15 +32,18 @@ namespace DAO.Implementations.Memory
         /// Agrega un boleto en la BBDD con un numero de ID unico autoincremental
         /// </summary>
         /// <param name="obj">Boleto a agregar</param>
-        public int Add(Boleto obj)
+        public Guid Add(Boleto obj)
         {
-            
-            obj.Numero = _Boletos.Any() ? _Boletos.Max(b => b.Numero) + 1 : 0;
+
+            List<Boleto> boletosEnVenta = _Boletos.Where(b => b.IDVenta == obj.IDVenta).ToList();
+
+            obj.NumeroEnVenta = boletosEnVenta.Any() ? boletosEnVenta.Max(b => b.NumeroEnVenta) + 1 : 0;
+
             _Boletos.Add(obj);
 
-            LoggerService.WriteLog($"Se agregó el boleto {obj.Numero}", TraceLevel.Info);
+            LoggerService.WriteLog($"Se agregó el boleto {obj.id}", TraceLevel.Info);
 
-            return obj.Numero;
+            return obj.id;
         }
         /// <summary>
         /// Obtiene todos los boletos en la BBDD
@@ -51,34 +58,34 @@ namespace DAO.Implementations.Memory
         /// </summary>
         /// <param name="NumeroBoleto">Numero de boleto a buscar</param>
         /// <returns></returns>
-        public Boleto GetByNumber(int NumeroBoleto)
+        public Boleto GetById(Guid id)
         {
-            return _Boletos.FirstOrDefault(b => b.Numero == NumeroBoleto);
+            return _Boletos.FirstOrDefault(b => b.id == id);
         }
         /// <summary>
         /// Obtiene todos los boletos de una venta en especifica
         /// </summary>
         /// <param name="venta">La venta de referencia para buscar los boletos</param>
         /// <returns></returns>
-        //public  List<Boleto> GetBySale(Venta venta)
-        //{
-
-        //}
+        public List<Boleto> GetBySale(Guid idVenta)
+        {
+            return _Boletos.Where(b => b.IDVenta == idVenta).ToList() ?? throw new BoletoDoesNotExistForSaleException();
+        }
         /// <summary>
         /// Actualiza el boleto enviado
         /// </summary>
         /// <param name="boleto">Boleto a actualizar</param>
         /// <returns></returns>
-        public int Update(Boleto boleto)
+        public Guid Update(Boleto boleto)
         {
-            Boleto boletoToUpdate = _Boletos.FirstOrDefault(b => b.Numero == boleto.Numero) ?? throw new BoletoDoesNotExistException();
+            Boleto boletoToUpdate = _Boletos.FirstOrDefault(b => b.id == boleto.id) ?? throw new BoletoDoesNotExistException();
 
             boletoToUpdate.FechaSalida = boleto.FechaSalida;
             boletoToUpdate.TiempoEnDias = boleto.TiempoEnDias;
 
-            LoggerService.WriteLog($"Se actualizó el boleto {boleto.Numero}", TraceLevel.Info);
+            LoggerService.WriteLog($"Se actualizó el boleto {boleto.id}", TraceLevel.Info);
 
-            return boleto.Numero;
+            return boleto.id;
         }
         /// <summary>
         /// Elimina el voleto enviado
@@ -87,13 +94,20 @@ namespace DAO.Implementations.Memory
         /// <returns></returns>
         public bool Remove(Boleto removeBoleto)
         {
-            LoggerService.WriteLog($"Se eliminó el boleto {removeBoleto.Numero}", TraceLevel.Info);
-            return _Boletos.Remove(_Boletos.FirstOrDefault(b => b.Numero == removeBoleto.Numero));
+            LoggerService.WriteLog($"Se eliminó el boleto {removeBoleto.id}", TraceLevel.Info);
+            return _Boletos.Remove(_Boletos.FirstOrDefault(b => b.id == removeBoleto.id));
         }
 
-        public bool Exists(Boleto obj)
+        public bool Exists(Boleto boleto)
         {
-            return _Boletos.Any(b => b.Numero == obj.Numero); 
+            return _Boletos.Any(b => b.id == boleto.id); 
+        }
+
+        public void DeleteBySaleID(Guid id)
+        {
+            int rowsAffected = _Boletos.RemoveAll(b => b.IDVenta == id);
+
+            LoggerService.WriteLog($"Se eliminaron {rowsAffected} boletos de la BBDD en base al id de compra: {id}", TraceLevel.Info);
         }
     }
 }

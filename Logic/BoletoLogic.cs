@@ -1,4 +1,5 @@
-﻿using DAO.Factory;
+﻿using DAO.Exceptions;
+using DAO.Factory;
 using DAO.Implementations.Memory;
 using DAO.Interfaces;
 using Domain;
@@ -16,6 +17,8 @@ namespace Logic
 {
     internal class BoletoLogic : IGenericLogic<Boleto>
     {
+        private List<Boleto> _boletosCache = new List<Boleto>();
+
         #region singleton
         private readonly static BoletoLogic _instance = new BoletoLogic();
 
@@ -65,13 +68,13 @@ namespace Logic
             return boletos;
         }
 
-        public Boleto GetByID(int number)
+        public Boleto GetByID(Guid id)
         {
             Boleto boleto;
 
             try
             {
-                boleto = FactoryDao.BoletoDao.GetByNumber(number);
+                boleto = FactoryDao.BoletoDao.GetById(id);
 
             }
             catch (Exception ex)
@@ -84,6 +87,17 @@ namespace Logic
                 throw new BoletoDoesNotExistException();
 
             return boleto;
+        }
+        public List<Boleto> GetBySaleID(Guid idVenta)
+        {
+            try
+            {
+                return FactoryDao.BoletoDao.GetBySale(idVenta);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         public DateTime CalcularRegreso(Boleto boleto)
         {
@@ -116,7 +130,28 @@ namespace Logic
 
             return sb.ToString();
         }
-        public int Save(Boleto boleto)
+        public Guid SaveOrUpdate(Boleto boleto)
+        {
+            try
+            {
+                if (BoletoExists(boleto))
+                {
+                    Update(boleto);
+                }
+                else
+                {
+                    Save(boleto);
+                }
+
+                return boleto.id;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        private Guid Save(Boleto boleto)
         {
             try
             {
@@ -127,7 +162,7 @@ namespace Logic
                 throw ex;
             }
         }
-        public int Update(Boleto boleto)
+        private Guid Update(Boleto boleto)
         {
             try
             {
@@ -139,14 +174,29 @@ namespace Logic
             }
         }
 
-        //private void addAndUpdateValidations(Boleto boleto)
-        //{
-        //    if (boleto.FechaSalida == null)
-        //        throw new NoDepartureDateException(boleto.destino);
+        internal void DeleteBySaleID(Guid id)
+        {
+            FactoryDao.BoletoDao.DeleteBySaleID(id);
+        }
+        public bool BoletoExists(Boleto boleto)
+        {
+            if (_boletosCache.Any(v => v.id == boleto.id))
+                return true;
 
-        //    if (boleto.FechaSalida < DateTime.Today)
-        //        throw new ExpiredDepartureDateException(boleto.destino);
-        //}
-
+            try
+            {
+                Boleto boletoCache = FactoryDao.BoletoDao.GetById(boleto.id);
+                _boletosCache.Add(boletoCache);
+                return true;
+            }
+            catch (BoletoDoesNotExistException)
+            {
+                return false;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }
