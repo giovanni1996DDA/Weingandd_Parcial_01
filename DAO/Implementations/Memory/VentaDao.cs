@@ -13,6 +13,7 @@ namespace DAO.Implementations.Memory
     {
         private static List<Venta> _Venta = new List<Venta>();
 
+        private static int _NextNroVenta = 0;
         #region singleton
         private readonly static VentaDao _instance = new VentaDao();
 
@@ -31,9 +32,11 @@ namespace DAO.Implementations.Memory
         /// <returns>Retorna el id de la venta creada</returns>
         public Guid Add(Venta obj)
         {
+            obj.NroVenta = _NextNroVenta;
 
-            obj.NroVenta = _Venta.Any() ? _Venta.Max(b => b.NroVenta) + 1 : 0;
             _Venta.Add(obj);
+
+            _NextNroVenta++;
 
             LoggerService.WriteLog($"Se agregó la venta {obj.id}", TraceLevel.Info);
 

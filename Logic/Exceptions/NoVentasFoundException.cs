@@ -8,7 +8,7 @@ namespace Logic.Exceptions
 {
     internal class NoVentasFoundException : Exception
     {
-        public NoVentasFoundException() : base("No se encontró ninguna venta con el criterio de búsqueda seleccionado") 
+        public NoVentasFoundException() : base("No se encontró ninguna compra.") 
         { 
         }
     }

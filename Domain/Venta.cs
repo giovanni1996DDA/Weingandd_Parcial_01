@@ -18,5 +18,14 @@ namespace Domain
             fechaVenta = fechaDeVenta ?? DateTime.Today;
             BoletosVendidos = new List<Boleto>();
         }
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append($"Venta nro: {NroVenta}\n");
+            sb.Append($"Fecha de creación: {fechaVenta:d}");
+            
+            return sb.ToString();
+        }
     }
 }

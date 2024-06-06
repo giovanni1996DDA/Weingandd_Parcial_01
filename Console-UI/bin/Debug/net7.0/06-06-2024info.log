@@ -1,0 +1,49 @@
+06/06/2024 00:08:17 [Info] : Se agregó la venta e36bf04a-a0cf-40eb-a98d-6c84448b68bb
+06/06/2024 00:08:17 [Info] : Se agregó el boleto 2e603151-aac2-49a4-a024-c275e6499484
+06/06/2024 00:08:17 [Info] : Se agregó el boleto 646ea5fa-70c8-4d73-9b58-32f3320cd363
+06/06/2024 00:09:44 [Info] : Se agregó la venta df30af8a-0373-4818-a06f-529adc7d4317
+06/06/2024 00:09:44 [Info] : Se agregó el boleto b7effeb6-de0f-4418-969b-c11712f968f9
+06/06/2024 00:09:44 [Info] : Se agregó el boleto 07c9d65f-2875-4934-a644-8c6710f72af4
+06/06/2024 00:10:43 [Info] : Se eliminaron 2 boletos de la BBDD en base al id de compra: df30af8a-0373-4818-a06f-529adc7d4317
+06/06/2024 00:10:43 [Info] : Se actualizó la venta df30af8a-0373-4818-a06f-529adc7d4317
+06/06/2024 00:10:43 [Info] : Se agregó el boleto b7effeb6-de0f-4418-969b-c11712f968f9
+06/06/2024 00:11:07 [Info] : Se eliminó la venta df30af8a-0373-4818-a06f-529adc7d4317
+06/06/2024 00:14:16 [Info] : Se agregó la venta 055937fc-a163-4432-b3a8-54e03ec02ad7
+06/06/2024 00:14:16 [Info] : Se agregó el boleto 2477c29e-f43e-4445-b556-7c8427ad259c
+06/06/2024 00:14:16 [Info] : Se agregó el boleto f2d0f4bd-2d64-4424-8496-6e863fa1c3ee
+06/06/2024 00:15:10 [Info] : Se agregó la venta 72f933af-95fb-494f-a18a-541e505ec6d5
+06/06/2024 00:15:10 [Info] : Se agregó el boleto 2db8aee6-356b-43c3-8e3d-c413a7efa44d
+06/06/2024 00:15:10 [Info] : Se agregó el boleto bc374030-a302-433d-9683-e91d5e126f86
+06/06/2024 00:15:48 [Info] : Se eliminaron 2 boletos de la BBDD en base al id de compra: 72f933af-95fb-494f-a18a-541e505ec6d5
+06/06/2024 00:15:48 [Info] : Se actualizó la venta 72f933af-95fb-494f-a18a-541e505ec6d5
+06/06/2024 00:15:48 [Info] : Se agregó el boleto 2db8aee6-356b-43c3-8e3d-c413a7efa44d
+06/06/2024 00:15:48 [Info] : Se agregó el boleto bc374030-a302-433d-9683-e91d5e126f86
+06/06/2024 00:29:03 [Info] : Se agregó la venta dcda7056-870c-4432-9f3c-9c55912695bb
+06/06/2024 00:29:03 [Info] : Se agregó el boleto e767ada1-9870-4bb0-9b40-efccffbc85b2
+06/06/2024 00:30:22 [Info] : Se eliminaron 1 boletos de la BBDD en base al id de compra: dcda7056-870c-4432-9f3c-9c55912695bb
+06/06/2024 00:30:22 [Info] : Se actualizó la venta dcda7056-870c-4432-9f3c-9c55912695bb
+06/06/2024 00:30:22 [Info] : Se agregó el boleto e767ada1-9870-4bb0-9b40-efccffbc85b2
+06/06/2024 00:30:22 [Info] : Se agregó el boleto 567cf234-38d4-4cd8-92d2-3f9a0ddd8134
+06/06/2024 00:30:22 [Info] : Se agregó el boleto d61f97fd-ecdd-4fa1-8bd8-23afd6dd5087
+06/06/2024 00:31:59 [Info] : Se eliminaron 3 boletos de la BBDD en base al id de compra: dcda7056-870c-4432-9f3c-9c55912695bb
+06/06/2024 00:31:59 [Info] : Se actualizó la venta dcda7056-870c-4432-9f3c-9c55912695bb
+06/06/2024 00:32:10 [Info] : Se agregó el boleto e767ada1-9870-4bb0-9b40-efccffbc85b2
+06/06/2024 00:32:10 [Info] : Se agregó el boleto 567cf234-38d4-4cd8-92d2-3f9a0ddd8134
+06/06/2024 00:32:10 [Info] : Se agregó el boleto d61f97fd-ecdd-4fa1-8bd8-23afd6dd5087
+06/06/2024 00:32:10 [Info] : Se agregó el boleto d6d75710-1133-4120-ada1-006165c3348c
+06/06/2024 00:37:07 [Info] : Se agregó la venta 1bb9dafe-9f62-4ba5-9385-d0ca98cfbdf4
+06/06/2024 00:37:07 [Info] : Se agregó el boleto 040b91e1-162d-4611-9c25-d2405f47c319
+06/06/2024 00:37:07 [Info] : Se agregó el boleto e5de9511-afd3-409d-923a-d78574872c65
+06/06/2024 00:38:57 [Info] : Se eliminaron 2 boletos de la BBDD en base al id de compra: 1bb9dafe-9f62-4ba5-9385-d0ca98cfbdf4
+06/06/2024 00:38:57 [Info] : Se actualizó la venta 1bb9dafe-9f62-4ba5-9385-d0ca98cfbdf4
+06/06/2024 00:38:57 [Info] : Se agregó el boleto 040b91e1-162d-4611-9c25-d2405f47c319
+06/06/2024 00:38:57 [Info] : Se agregó el boleto 3abf278d-9e9f-460b-998e-c23ad51c124c
+06/06/2024 00:38:57 [Info] : Se agregó el boleto 4b9c66ec-6ab6-4277-a855-e694c5c29b21
+06/06/2024 00:40:01 [Info] : Se agregó la venta 83716085-ed0d-44ff-9d4d-18c2e99365ed
+06/06/2024 00:40:01 [Info] : Se agregó el boleto cdd6b44f-7439-4707-adef-9462420db9bb
+06/06/2024 00:40:01 [Info] : Se agregó el boleto 1801a3de-f943-4e5f-a584-9e390cb01c5c
+06/06/2024 00:40:23 [Info] : Se eliminaron 3 boletos de la BBDD en base al id de compra: 1bb9dafe-9f62-4ba5-9385-d0ca98cfbdf4
+06/06/2024 00:40:23 [Info] : Se actualizó la venta 1bb9dafe-9f62-4ba5-9385-d0ca98cfbdf4
+06/06/2024 00:40:23 [Info] : Se agregó el boleto 040b91e1-162d-4611-9c25-d2405f47c319
+06/06/2024 00:40:23 [Info] : Se agregó el boleto 4b9c66ec-6ab6-4277-a855-e694c5c29b21
+06/06/2024 00:40:42 [Info] : Se eliminó la venta 1bb9dafe-9f62-4ba5-9385-d0ca98cfbdf4

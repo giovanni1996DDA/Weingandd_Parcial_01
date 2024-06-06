@@ -9,9 +9,9 @@ namespace Domain
         public readonly double costoEmbarque = 9950.0;
 
         public int tipoBoleto;
-        public string destino { get; set; }
+        public string Destino { get; set; }
         public DateTime FechaSalida { get; set; }
-        public Guid id { get; set; }
+        public Guid ID { get; set; }
         public int NumeroEnVenta { get; set; }
         public Guid IDVenta { get; set; }
         public int? TiempoEnDias { get; set; }
@@ -19,33 +19,32 @@ namespace Domain
         //Si el boleto es solo de ida, no hace falta defnir el tiempo de duracion del viaje
         public Boleto(string destino, DateTime? fechaSalida)
         {
-            id  = Guid.NewGuid();
+            ID  = Guid.NewGuid();
             this.FechaSalida = fechaSalida ?? DateTime.Now;
         }
         public Boleto(string destino, DateTime? fechaSalida, int tiempoDias)
         {
-            id = Guid.NewGuid();
+            ID = Guid.NewGuid();
             this.FechaSalida = fechaSalida ?? DateTime.Now;
             this.TiempoEnDias = tiempoDias;
         }
 
         protected Boleto()
         {
-            id = Guid.NewGuid();
+            ID = Guid.NewGuid();
         }
         //public abstract double getCostoBoleto();
 
-        /*public override string ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine($"Boleto {Numero.ToString()}");
-            sb.AppendLine($"Fecha salida: {FechaSalida.ToString("d")}");
-            //sb.AppendLine($"Precio: {getCostoBoleto()}");
-            //sb.AppendLine($"Fecha regreso: {CalcularRegreso():d}");
+            sb.Append($"Boleto: {NumeroEnVenta} \n");
+            sb.Append($"Destino: {Destino} \n");
+            sb.Append($"Fecha salida: {FechaSalida:d}\n");
 
             return sb.ToString();
-        }*/
+        }
     }
     public enum TipoBoleto 
     { 

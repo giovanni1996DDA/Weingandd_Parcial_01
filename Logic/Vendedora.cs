@@ -1,4 +1,5 @@
-﻿using Domain;
+﻿using DAO.Factory;
+using Domain;
 using Logic.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ namespace Logic
     public class Vendedora
     {
         private Venta ventaEnCurso = null;
+
+        private List<Venta> cacheVentas;
 
         #region singleton
         private readonly static Vendedora _instance = new Vendedora();
@@ -59,31 +62,36 @@ namespace Logic
             if (fechaSalida < DateTime.Today)
                 throw new ExpiredDepartureDateException();
 
+            ventaEnCurso.BoletosVendidos.Add( CreateTipoBoleto(destino, fechaSalida, duracion, tipoBoleto) );
+        }
 
-            switch (tipoBoleto) 
+        private Boleto CreateTipoBoleto(string destino, DateTime fechaSalida, int? duracion, TipoBoleto tipoBoleto, int? nroEnVenta = null)
+        {
+            switch (tipoBoleto)
             {
                 case TipoBoleto.Turista:
-                    ventaEnCurso.BoletosVendidos.Add(new BoletoTurista(){
-                                                                            NumeroEnVenta = ventaEnCurso.BoletosVendidos.Count + 1,
-                                                                            destino = destino,
-                                                                            FechaSalida = fechaSalida,
-                                                                            TiempoEnDias = duracion
-                                                                        });
-                    break;
+                    return new BoletoTurista()
+                    {
+                        NumeroEnVenta   = nroEnVenta == null ? ventaEnCurso.BoletosVendidos.Count + 1 : (int)nroEnVenta,
+                        Destino         = destino,
+                        FechaSalida     = fechaSalida,
+                        TiempoEnDias    = duracion
+                    };
 
                 case TipoBoleto.Ejecutivo:
-                    ventaEnCurso.BoletosVendidos.Add(new BoletoEjecutivo(){
-                                                                            NumeroEnVenta = ventaEnCurso.BoletosVendidos.Count + 1,
-                                                                            destino = destino,
-                                                                            FechaSalida = fechaSalida,
-                                                                            TiempoEnDias = duracion
-                                                                        });
-                    break;
+                    return new BoletoEjecutivo()
+                    {
+                        NumeroEnVenta   = nroEnVenta == null ? ventaEnCurso.BoletosVendidos.Count + 1 : (int)nroEnVenta,
+                        Destino         = destino,
+                        FechaSalida     = fechaSalida,
+                        TiempoEnDias    = duracion
+                    };
 
                 default:
                     throw new NotImplementedException();
             }
         }
+
         public void EliminarBoletos(int nroEnVenta) 
         {
 
@@ -101,6 +109,18 @@ namespace Logic
                 ventaEnCurso.BoletosVendidos[i].NumeroEnVenta = i + 1;
             }
 
+        }
+        public void ModificarBoletos(string destino, DateTime fechaSalida, int? duracion, TipoBoleto tipoBoleto, int nroEnVenta)
+        {
+
+            Boleto boletoAModificar = ventaEnCurso.BoletosVendidos.FirstOrDefault(b => b.NumeroEnVenta == nroEnVenta)
+                                   ?? throw new BoletoEnVentaDoesNotExistException();
+
+            ventaEnCurso.BoletosVendidos.Remove(boletoAModificar);
+
+            ventaEnCurso.BoletosVendidos.Add( CreateTipoBoleto(destino, fechaSalida, duracion, tipoBoleto, nroEnVenta) );
+
+            ventaEnCurso.BoletosVendidos = ventaEnCurso.BoletosVendidos.OrderBy(b => b.NumeroEnVenta).ToList();
         }
         public string ListarBoletos()
         {
@@ -156,12 +176,57 @@ namespace Logic
             return BoletoLogic.Instance.getCostoBoleto(boleto);
         }
 
-        public double ObtenerTotalVentaEnCurso()
+        public double ObtenerTotalCompraEnCurso()
         {
             if (ventaEnCurso.BoletosVendidos.Count == 0)
                 throw new VentaEnCursoHasNoBoletoException();
 
-            return VentaLogic.Instance.getTotalVenta(ventaEnCurso);
+            return VentaLogic.Instance.GetTotalVenta(ventaEnCurso);
+        }
+
+        public string ListarVentas()
+        {
+            try
+            {
+                StringBuilder sb = new StringBuilder();
+
+                cacheVentas = VentaLogic.Instance.GetAll();
+
+                foreach (Venta venta in cacheVentas)
+                {
+                    sb.AppendLine("-------------------------------");
+                    sb.AppendLine();
+                    sb.AppendLine(venta.ToString());
+                    foreach (Boleto boleto in venta.BoletosVendidos)
+                    {
+                        sb.AppendLine();
+                        sb.AppendLine(BoletoLogic.Instance.BoletoToString(boleto));
+                        sb.AppendLine();
+                    }
+                }
+                sb.AppendLine("-------------------------------");
+
+                return sb.ToString();
+            }
+            catch (NoVentasFoundException)
+            {
+                throw;
+            }
+        }
+
+        public void EliminarVenta(int nroVenta)
+        {
+
+            Venta venta = cacheVentas.FirstOrDefault(v => v.NroVenta == nroVenta) ?? throw new VentaDoesNotExistException();
+
+            try
+            {
+                VentaLogic.Instance.Delete(venta);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

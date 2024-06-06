@@ -8,7 +8,7 @@ namespace Logic.Exceptions
 {
     internal class ErrorDeletingException : Exception
     {
-        public ErrorDeletingException() : base("No se han podido eliminar los elementos seleccionados")
+        public ErrorDeletingException() : base("No se ha podido eliminar el/los elementos seleccionados")
         {
         
         } 

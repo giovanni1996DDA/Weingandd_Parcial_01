@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoletoLogic.cs" />
-    <Compile Include="Exceptions\BoletoDoesNotExistsException.cs" />
     <Compile Include="Exceptions\BoletoEnVentaDoesNotExistException.cs" />
     <Compile Include="Exceptions\EmptyVentasException.cs" />
     <Compile Include="Exceptions\ErrorDeletingException.cs" />
@@ -52,6 +51,7 @@
     <Compile Include="Exceptions\NoDepartureDateException.cs" />
     <Compile Include="Exceptions\NoVentasFoundException.cs" />
     <Compile Include="Exceptions\UnespecifiedDurationTimeException.cs" />
+    <Compile Include="Exceptions\VentaDoesNotExistException.cs" />
     <Compile Include="Exceptions\VentaEnCursoAlreadyExistsException.cs" />
     <Compile Include="Exceptions\VentaEnCursoHasNoBoletoException.cs" />
     <Compile Include="Interfaces\IGenericLogic.cs" />

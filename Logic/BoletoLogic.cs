@@ -122,11 +122,9 @@ namespace Logic
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine($"Boleto nro: {boleto.NumeroEnVenta}");
-            sb.AppendLine($"Destino: {boleto.destino}");
-            sb.AppendLine($"Fecha salida: {boleto.FechaSalida:d}");
-            sb.AppendLine($"Precio: {getCostoBoleto(boleto)}");
-            sb.AppendLine($"Fecha regreso: {CalcularRegreso(boleto):d}");
+            sb.Append($"{boleto}");
+            sb.Append($"Precio: {getCostoBoleto(boleto)}\n");
+            sb.Append($"Fecha regreso: {CalcularRegreso(boleto):d}");
 
             return sb.ToString();
         }
@@ -143,7 +141,7 @@ namespace Logic
                     Save(boleto);
                 }
 
-                return boleto.id;
+                return boleto.ID;
             }
             catch (Exception ex)
             {
@@ -180,23 +178,7 @@ namespace Logic
         }
         public bool BoletoExists(Boleto boleto)
         {
-            if (_boletosCache.Any(v => v.id == boleto.id))
-                return true;
-
-            try
-            {
-                Boleto boletoCache = FactoryDao.BoletoDao.GetById(boleto.id);
-                _boletosCache.Add(boletoCache);
-                return true;
-            }
-            catch (BoletoDoesNotExistException)
-            {
-                return false;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            return FactoryDao.BoletoDao.Exists(boleto);
         }
     }
 }

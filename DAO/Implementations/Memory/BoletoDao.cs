@@ -16,7 +16,6 @@ namespace DAO.Implementations.Memory
     {
         private static List<Boleto> _Boletos = new List<Boleto>();
 
-
         #region singleton
         private readonly static BoletoDao _instance = new BoletoDao();
 
@@ -29,21 +28,21 @@ namespace DAO.Implementations.Memory
         }
         #endregion
         /// <summary>
-        /// Agrega un boleto en la BBDD con un numero de ID unico autoincremental
+        /// Agrega un boleto en la BBDD con un número de NumeroEnVenta autoincremental en base a la venta
         /// </summary>
         /// <param name="obj">Boleto a agregar</param>
         public Guid Add(Boleto obj)
         {
 
-            List<Boleto> boletosEnVenta = _Boletos.Where(b => b.IDVenta == obj.IDVenta).ToList();
+            //List<Boleto> boletosEnVenta = _Boletos.Where(b => b.IDVenta == obj.IDVenta).ToList();
 
-            obj.NumeroEnVenta = boletosEnVenta.Any() ? boletosEnVenta.Max(b => b.NumeroEnVenta) + 1 : 0;
+            //obj.NumeroEnVenta = boletosEnVenta.Any() ? boletosEnVenta.Max(b => b.NumeroEnVenta) + 1 : 0;
 
             _Boletos.Add(obj);
 
-            LoggerService.WriteLog($"Se agregó el boleto {obj.id}", TraceLevel.Info);
+            LoggerService.WriteLog($"Se agregó el boleto {obj.ID}", TraceLevel.Info);
 
-            return obj.id;
+            return obj.ID;
         }
         /// <summary>
         /// Obtiene todos los boletos en la BBDD
@@ -60,7 +59,7 @@ namespace DAO.Implementations.Memory
         /// <returns></returns>
         public Boleto GetById(Guid id)
         {
-            return _Boletos.FirstOrDefault(b => b.id == id);
+            return _Boletos.FirstOrDefault(b => b.ID == id) ?? throw new BoletoDoesNotExistException();
         }
         /// <summary>
         /// Obtiene todos los boletos de una venta en especifica
@@ -78,14 +77,14 @@ namespace DAO.Implementations.Memory
         /// <returns></returns>
         public Guid Update(Boleto boleto)
         {
-            Boleto boletoToUpdate = _Boletos.FirstOrDefault(b => b.id == boleto.id) ?? throw new BoletoDoesNotExistException();
+            Boleto boletoToUpdate = _Boletos.FirstOrDefault(b => b.ID == boleto.ID) ?? throw new BoletoDoesNotExistException();
 
             boletoToUpdate.FechaSalida = boleto.FechaSalida;
             boletoToUpdate.TiempoEnDias = boleto.TiempoEnDias;
 
-            LoggerService.WriteLog($"Se actualizó el boleto {boleto.id}", TraceLevel.Info);
+            LoggerService.WriteLog($"Se actualizó el boleto {boleto.ID}", TraceLevel.Info);
 
-            return boleto.id;
+            return boleto.ID;
         }
         /// <summary>
         /// Elimina el voleto enviado
@@ -94,13 +93,13 @@ namespace DAO.Implementations.Memory
         /// <returns></returns>
         public bool Remove(Boleto removeBoleto)
         {
-            LoggerService.WriteLog($"Se eliminó el boleto {removeBoleto.id}", TraceLevel.Info);
-            return _Boletos.Remove(_Boletos.FirstOrDefault(b => b.id == removeBoleto.id));
+            LoggerService.WriteLog($"Se eliminó el boleto {removeBoleto.ID}", TraceLevel.Info);
+            return _Boletos.Remove(_Boletos.FirstOrDefault(b => b.ID == removeBoleto.ID));
         }
 
         public bool Exists(Boleto boleto)
         {
-            return _Boletos.Any(b => b.id == boleto.id); 
+            return _Boletos.Any(b => b.ID == boleto.ID); 
         }
 
         public void DeleteBySaleID(Guid id)

@@ -25,3 +25,22 @@
 05/06/2024 16:31:46 [Info] : Se agregó el boleto 6a4956c0-b7be-4fa6-93b9-5ff8b9070fc5
 05/06/2024 17:44:39 [Info] : Se agregó la venta bd310cdd-9307-4dac-8ea0-d5b2415bf227
 05/06/2024 17:44:45 [Info] : Se agregó el boleto 212fba48-e2dd-4a28-baf0-1d286a331b18
+05/06/2024 22:40:12 [Info] : Se agregó la venta f56176f8-9e38-476b-8684-73339ed267a8
+05/06/2024 22:40:14 [Info] : Se agregó el boleto be5510f4-4706-4b77-a874-d802421e2eb7
+05/06/2024 23:20:26 [Info] : Se agregó la venta bdaace10-04e9-45c2-8a13-492f4a382ce6
+05/06/2024 23:20:26 [Info] : Se agregó el boleto 742deac1-c025-40f3-ba8f-408aa896b95b
+05/06/2024 23:20:26 [Info] : Se agregó el boleto ba0f7a51-4232-4253-aa06-523f86db7008
+05/06/2024 23:26:16 [Info] : Se agregó la venta 91a569c0-eb88-40f5-8a46-3aac9c455636
+05/06/2024 23:26:16 [Info] : Se agregó el boleto 2ed8823e-2262-4d82-b266-069b8b5d8c55
+05/06/2024 23:26:16 [Info] : Se agregó el boleto 3e08cd1b-219d-4717-99cb-ec913ba20d58
+05/06/2024 23:38:53 [Info] : Se eliminaron 2 boletos de la BBDD en base al id de compra: 91a569c0-eb88-40f5-8a46-3aac9c455636
+05/06/2024 23:38:53 [Info] : Se actualizó la venta 91a569c0-eb88-40f5-8a46-3aac9c455636
+05/06/2024 23:38:53 [Info] : Se agregó el boleto 2ed8823e-2262-4d82-b266-069b8b5d8c55
+05/06/2024 23:39:35 [Info] : Se agregó la venta fc0ce71e-8792-41a4-b93f-2249936f5535
+05/06/2024 23:39:35 [Info] : Se agregó el boleto 373bd532-0ad5-41a6-acf0-676fe2340814
+05/06/2024 23:39:35 [Info] : Se agregó el boleto 801ebbd8-0dea-485d-a76f-423164d0ddca
+05/06/2024 23:40:23 [Info] : Se eliminaron 2 boletos de la BBDD en base al id de compra: fc0ce71e-8792-41a4-b93f-2249936f5535
+05/06/2024 23:40:23 [Info] : Se actualizó la venta fc0ce71e-8792-41a4-b93f-2249936f5535
+05/06/2024 23:40:23 [Info] : Se agregó el boleto 373bd532-0ad5-41a6-acf0-676fe2340814
+05/06/2024 23:40:23 [Info] : Se agregó el boleto 801ebbd8-0dea-485d-a76f-423164d0ddca
+05/06/2024 23:40:23 [Info] : Se agregó el boleto 14ededce-58aa-4c15-8147-749983826470
